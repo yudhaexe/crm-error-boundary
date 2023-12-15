@@ -1,0 +1,9 @@
+{
+  "extends": "next/core-web-vitals",
+  "env": {
+    "es2021": true,
+    "node": true,
+    "browser": true
+  }
+  
+}
