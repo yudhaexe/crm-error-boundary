@@ -9,7 +9,7 @@ interface SearchProps {
 
 const SearchBar: React.FC<SearchProps> = ({ setSearchText, searchText }) => {
   return (
-    <div className="w-auto h-10 items-center rounded-lg text-gray-900 bg-gray-100">
+    <div className="w-auto h-10 items-center rounded-lg text-gray-900 bg-gray-100 flex">
       <Search fontSize={"small"} sx={{ mx: 1 }} />
       <InputBase
         placeholder={"Search"}

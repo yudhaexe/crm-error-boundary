@@ -187,39 +187,41 @@ export default function ClientTab() {
   if (!isError) {
     return (
       <>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap  gap-6">
           <div className="w-auto h-10 items-center rounded-lg text-gray-900 bg-gray-100">
             <SearchBar setSearchText={setSearchText} searchText={searchText} />
           </div>
-          {/* Gender Filter Component */}
-          <FilterButton
-            anchorEl={anchorGenderFilter}
-            handleOpen={handleOpenGenderMenu}
-            handleClose={handlecloseGenderMenu}
-            checkedValues={checkedGender}
-            handleChecked={handleCheckedGender}
-            filterName="Gender"
-          />
+          <div className="flex flex-wrap gap-4">
+            {/* Gender Filter Component */}
+            <FilterButton
+              anchorEl={anchorGenderFilter}
+              handleOpen={handleOpenGenderMenu}
+              handleClose={handlecloseGenderMenu}
+              checkedValues={checkedGender}
+              handleChecked={handleCheckedGender}
+              filterName="Gender"
+            />
 
-          {/* Marital Status Filter Component */}
-          <FilterButton
-            anchorEl={anchorMaritialFilter}
-            handleOpen={handleOpenMaritialMenu}
-            handleClose={handlecloseMaritialMenu}
-            checkedValues={checkedMaritial}
-            handleChecked={handleCheckedMaritial}
-            filterName="Marital Status"
-          />
+            {/* Marital Status Filter Component */}
+            <FilterButton
+              anchorEl={anchorMaritialFilter}
+              handleOpen={handleOpenMaritialMenu}
+              handleClose={handlecloseMaritialMenu}
+              checkedValues={checkedMaritial}
+              handleChecked={handleCheckedMaritial}
+              filterName="Marital Status"
+            />
 
-          {/* Employment Filter Component */}
-          <FilterButton
-            anchorEl={anchorEmploymentFilter}
-            handleOpen={handleOpenEmploymentMenu}
-            handleClose={handlecloseEmploymentMenu}
-            checkedValues={checkedEmployment}
-            handleChecked={handleCheckedEmployment}
-            filterName="Employment"
-          />
+            {/* Employment Filter Component */}
+            <FilterButton
+              anchorEl={anchorEmploymentFilter}
+              handleOpen={handleOpenEmploymentMenu}
+              handleClose={handlecloseEmploymentMenu}
+              checkedValues={checkedEmployment}
+              handleChecked={handleCheckedEmployment}
+              filterName="Employment"
+            />
+          </div>
         </div>
         <DataGrid
           {...clientData}
@@ -248,6 +250,6 @@ export default function ClientTab() {
       </>
     );
   } else {
-    return <ClientError/>
+    return <ClientError />;
   }
 }
