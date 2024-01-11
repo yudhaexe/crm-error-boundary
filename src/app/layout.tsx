@@ -8,6 +8,7 @@ const font = Inter({
   variable: "--font-poppins",
   subsets: ["latin"],
 });
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <Navbar />
           <Container>{children}</Container>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
