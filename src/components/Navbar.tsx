@@ -34,9 +34,16 @@ import {
 } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
-
-const pages = ["Dashboard", "CRM", "Submission", "Commission", "LMS"];
+import { usePathname } from "next/navigation";
+const pages = [
+  { name: "Dashboard", url: "/dashboard", key: "dashboard" },
+  { name: "CRM", url: "/", key: "crm" },
+  { name: "Submission", url: "/submission", key: "submission" },
+  { name: "Commission", url: "/commission", key: "comission" },
+  { name: "LMS", url: "/lms", key: "lms" },
+];
 export default function Navbar() {
+  const pathname = usePathname();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -74,9 +81,8 @@ export default function Navbar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              sx={{ color: "black" }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "black" }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -95,9 +101,14 @@ export default function Navbar() {
               className="xs:block md:hidden "
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link href="/profile" className="text-black">
-                    {page}
+                <MenuItem key={page.key} onClick={handleCloseNavMenu}>
+                  <Link
+                    href={page.url}
+                    className={`${
+                      pathname == page.url ? "text-gray-900" : "text-gray-700"
+                    }`}
+                  >
+                    {page.name}
                   </Link>
                 </MenuItem>
               ))}
@@ -115,12 +126,14 @@ export default function Navbar() {
           <Box className="flex-grow hidden md:flex gap-5 mx-5">
             {pages.map((page) => (
               <Link
-                href="/profile"
-                key={page}
+                href={page.url}
+                key={page.key}
                 onClick={handleCloseNavMenu}
-                className="my-2  flex normal-case text-base font-semibold text-gray-700"
+                className={`${
+                  pathname == page.url ? "text-gray-900" : "text-gray-700"
+                } my-2  flex normal-case text-base font-semibold `}
               >
-                {page}
+                {page.name}
               </Link>
             ))}
           </Box>
@@ -162,7 +175,7 @@ export default function Navbar() {
                     </Typography>
                   </div>
                 </div>
-                <Divider/>
+                <Divider />
                 <div className="flex gap-2">
                   <Person fontSize="small" />
                   <Typography className="text-sm">View Profile</Typography>
@@ -175,7 +188,7 @@ export default function Navbar() {
                   <BoltOutlined fontSize="small" />
                   <Typography className="text-sm">Keyboard Shortcut</Typography>
                 </div>
-                <Divider/>
+                <Divider />
                 <div className="flex gap-2">
                   <HouseOutlined fontSize="small" />
                   <Typography className="text-sm">Company Profile</Typography>
@@ -188,7 +201,7 @@ export default function Navbar() {
                   <PersonAddOutlined fontSize="small" />
                   <Typography className="text-sm">Invite colleagues</Typography>
                 </div>
-                <Divider/>
+                <Divider />
                 <div className="flex gap-2">
                   <LayersOutlined fontSize="small" />
                   <Typography className="text-sm">Slack Community</Typography>
@@ -201,7 +214,7 @@ export default function Navbar() {
                   <HelpOutlineOutlined fontSize="small" />
                   <Typography className="text-sm">API</Typography>
                 </div>
-                <Divider/>
+                <Divider />
                 <div className="flex gap-2">
                   <LogoutOutlined fontSize="small" />
                   <Typography className="text-sm">Log out</Typography>

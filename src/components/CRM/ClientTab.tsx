@@ -187,7 +187,7 @@ export default function ClientTab() {
   if (!isError) {
     return (
       <>
-        <div className="flex flex-wrap gap-6">
+        <div className="flex flex-wrap  gap-6">
           <div className="w-auto h-10 items-center rounded-lg text-gray-900 bg-gray-100">
             <SearchBar setSearchText={setSearchText} searchText={searchText} />
           </div>
